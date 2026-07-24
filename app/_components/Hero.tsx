@@ -59,7 +59,7 @@ export default function Hero() {
         <div className="container-page grid items-center gap-10 lg:grid-cols-[1fr_1.15fr] lg:gap-10">
           {/* Copy */}
           <div>
-            <h1 className="mt-5 font-display text-[2rem] font-bold leading-[1.1] tracking-tight sm:text-[2.5rem] lg:text-[2.75rem]">
+            <h1 className="mt-5 font-display text-[2rem] font-bold leading-[1.1] tracking-tight sm:text-[2.5rem] lg:text-[3rem]">
               <span className="hero-line block">Tecnologia que faz</span>
               <span className="hero-line block">
                 sua empresa <span className="text-brand-400">vender mais</span>,

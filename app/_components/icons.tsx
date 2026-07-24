@@ -78,6 +78,30 @@ export const IconArrowRight = (p: IconProps) => (
   </svg>
 );
 
+export const IconChevronLeft = (p: IconProps) => (
+  <svg {...base} {...p}>
+    <path d="m14.5 6-6 6 6 6" />
+  </svg>
+);
+
+export const IconChevronRight = (p: IconProps) => (
+  <svg {...base} {...p}>
+    <path d="m9.5 6 6 6-6 6" />
+  </svg>
+);
+
+export const IconPause = (p: IconProps) => (
+  <svg {...base} {...p}>
+    <path d="M9.5 5v14M14.5 5v14" />
+  </svg>
+);
+
+export const IconPlay = (p: IconProps) => (
+  <svg {...base} {...p}>
+    <path d="M8 5.5v13l11-6.5-11-6.5Z" />
+  </svg>
+);
+
 export const IconCheck = (p: IconProps) => (
   <svg {...base} {...p}>
     <path d="M20 6 9 17l-5-5" />

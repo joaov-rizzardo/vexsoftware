@@ -52,7 +52,7 @@ export default function DeviceMockup() {
   return (
     <div
       ref={stageRef}
-      className="relative w-full origin-center lg:scale-105 xl:scale-110 xl:-mr-8"
+      className="relative w-full origin-center lg:scale-95 xl:scale-100"
       style={{ perspective: "1200px" }}
     >
       <div className="pointer-events-none absolute left-1/2 top-1/2 h-[420px] w-[420px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-brand-500/25 blur-[90px]" />
@@ -64,9 +64,9 @@ export default function DeviceMockup() {
             <Image
               src="/dashboard-mockup.png"
               alt="Painel VEX exibindo dashboard, faturamento e indicadores em um notebook e celular"
-              width={1264}
-              height={843}
-              sizes="(max-width: 1024px) 90vw, 60vw"
+              width={1461}
+              height={979}
+              sizes="(max-width: 1024px) 90vw, 55vw"
               className="h-auto w-full drop-shadow-2xl"
               priority
             />
