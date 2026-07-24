@@ -10,6 +10,7 @@ import LogoCloud from "./_components/LogoCloud";
 import Faq from "./_components/Faq";
 import CtaBanner from "./_components/CtaBanner";
 import Footer from "./_components/Footer";
+import WhatsAppFloat from "./_components/WhatsAppFloat";
 
 export default function Home() {
   return (
@@ -27,6 +28,7 @@ export default function Home() {
         <CtaBanner />
       </main>
       <Footer />
+      <WhatsAppFloat />
     </>
   );
 }
