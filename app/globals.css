@@ -93,6 +93,43 @@ body {
 /* ============================================================
    Utilities
    ============================================================ */
+
+/* Container padrão do site. Substitui o antigo `mx-auto max-w-7xl px-6 lg:px-10`
+   espalhado pelas seções — largura maior e padding que cresce com a viewport,
+   para não sobrar margem morta em telas grandes. */
+@utility container-page {
+  width: 100%;
+  margin-inline: auto;
+  max-width: 96rem; /* 1536px */
+  padding-inline: 1.25rem;
+
+  @media (width >= 40rem) {
+    padding-inline: 2rem;
+  }
+  @media (width >= 64rem) {
+    padding-inline: 3rem;
+  }
+  @media (width >= 96rem) {
+    padding-inline: 4rem;
+  }
+}
+
+/* Variante para conteúdo de leitura (FAQ, stats, CTA), onde linhas muito
+   largas prejudicam a legibilidade. */
+@utility container-narrow {
+  width: 100%;
+  margin-inline: auto;
+  max-width: 80rem; /* 1280px */
+  padding-inline: 1.25rem;
+
+  @media (width >= 40rem) {
+    padding-inline: 2rem;
+  }
+  @media (width >= 64rem) {
+    padding-inline: 3rem;
+  }
+}
+
 .font-display {
   font-family: var(--font-poppins), system-ui, sans-serif;
 }

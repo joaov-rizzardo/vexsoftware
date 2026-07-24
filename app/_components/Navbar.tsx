@@ -9,6 +9,7 @@ const links = [
   { label: "Soluções", href: "#solucoes" },
   { label: "Projetos", href: "#projetos" },
   { label: "Como funciona", href: "#processo" },
+  { label: "Depoimentos", href: "#depoimentos" },
   { label: "Sobre nós", href: "#sobre" },
   { label: "Blog", href: "#blog" },
 ];
@@ -46,10 +47,10 @@ export default function Navbar() {
           : "bg-transparent"
       }`}
     >
-      <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-10">
+      <nav className="container-page flex items-center justify-between py-4">
         <Logo />
 
-        <ul className="hidden items-center gap-8 text-sm text-slate-300 lg:flex">
+        <ul className="hidden items-center gap-6 text-sm text-slate-300 lg:flex xl:gap-8">
           {links.map((link, i) => (
             <li key={link.label}>
               <a

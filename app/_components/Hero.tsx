@@ -56,17 +56,9 @@ export default function Hero() {
       {/* Main content — the whole block (copy + devices + bullets) is
           vertically centered together so nothing drifts to the bottom edge */}
       <div className="relative z-10 flex flex-1 flex-col justify-center pt-20 pb-8 lg:pt-16">
-        <div className="mx-auto grid w-full max-w-7xl items-center gap-10 px-6 lg:grid-cols-[1fr_1.15fr] lg:gap-10 lg:px-10">
+        <div className="container-page grid items-center gap-10 lg:grid-cols-[1fr_1.15fr] lg:gap-10">
           {/* Copy */}
           <div>
-            <span className="hero-badge inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3.5 py-1.5 text-[0.7rem] font-medium text-slate-200 backdrop-blur-sm">
-              <span className="relative flex h-1.5 w-1.5">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent-400 opacity-75" />
-                <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-accent-500" />
-              </span>
-              Software sob medida para pequenas e médias empresas
-            </span>
-
             <h1 className="mt-5 font-display text-[2rem] font-bold leading-[1.1] tracking-tight sm:text-[2.5rem] lg:text-[2.75rem]">
               <span className="hero-line block">Tecnologia que faz</span>
               <span className="hero-line block">
@@ -107,7 +99,7 @@ export default function Hero() {
         </div>
 
         {/* Trust bullets — single inline row when there's space, wraps gracefully */}
-        <div className="mx-auto mt-10 w-full max-w-6xl px-6 lg:mt-12 lg:px-10">
+        <div className="container-page mt-10 lg:mt-12">
           <div className="flex flex-wrap items-center justify-center gap-x-7 gap-y-3 border-t border-white/10 pt-5 text-[0.8rem] text-slate-300 lg:justify-start">
             {bullets.map((b) => (
               <span key={b} className="hero-bullet flex items-center gap-2 whitespace-nowrap">

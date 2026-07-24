@@ -81,7 +81,7 @@ export default function Faq() {
       <div className="bg-grid pointer-events-none absolute inset-0 opacity-40 bg-radial-fade" />
       <div className="pointer-events-none absolute -left-32 top-1/4 h-80 w-80 rounded-full bg-brand-600/20 blur-[120px]" />
 
-      <div className="relative mx-auto max-w-6xl px-6 lg:px-10">
+      <div className="relative container-narrow">
         <Reveal as="h2" className="text-center font-display text-3xl font-bold tracking-tight sm:text-4xl">
           Perguntas <span className="text-accent-400">frequentes</span>
         </Reveal>

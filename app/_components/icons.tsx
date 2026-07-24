@@ -162,6 +162,13 @@ export const IconStar = (p: IconProps) => (
   </svg>
 );
 
+export const IconQuote = (p: IconProps) => (
+  <svg {...base} {...p}>
+    <path d="M9.5 6C6.5 7.4 5 9.9 5 13.5V18h5.5v-5.5H8c0-2 .6-3.4 2.4-4.4Z" />
+    <path d="M19 6c-3 1.4-4.5 3.9-4.5 7.5V18H20v-5.5h-2.5c0-2 .6-3.4 2.4-4.4Z" />
+  </svg>
+);
+
 export const IconTrendingUp = (p: IconProps) => (
   <svg {...base} {...p}>
     <path d="m3 17 6-6 4 4 8-8" />

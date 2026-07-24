@@ -6,7 +6,7 @@ import { IconArrowRight, IconChatBubble } from "./icons";
 export default function CtaBanner() {
   return (
     <section id="contato" className="relative bg-navy-800 pb-24">
-      <div className="mx-auto max-w-6xl px-6 lg:px-10">
+      <div className="container-narrow">
         <Reveal>
           <div className="relative overflow-hidden rounded-3xl bg-[linear-gradient(120deg,#2563eb,#1e40af)] px-8 py-10 shadow-glow sm:px-12">
             {/* decorative shimmer */}

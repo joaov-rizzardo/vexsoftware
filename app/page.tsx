@@ -5,6 +5,7 @@ import ProblemSection from "./_components/ProblemSection";
 import Services from "./_components/Services";
 import Stats from "./_components/Stats";
 import Process from "./_components/Process";
+import Testimonials from "./_components/Testimonials";
 import LogoCloud from "./_components/LogoCloud";
 import Faq from "./_components/Faq";
 import CtaBanner from "./_components/CtaBanner";
@@ -21,7 +22,7 @@ export default function Home() {
         <Services />
         <Stats />
         <Process />
-        <LogoCloud />
+        <Testimonials />
         <Faq />
         <CtaBanner />
       </main>

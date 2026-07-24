@@ -17,7 +17,7 @@ export default function ProblemSection() {
 
   return (
     <section id="sobre" className="relative bg-white py-24">
-      <div className="mx-auto grid max-w-7xl items-center gap-14 px-6 lg:grid-cols-2 lg:px-10">
+      <div className="container-page grid items-center gap-14 lg:grid-cols-2">
         {/* Copy */}
         <div>
           <Reveal as="h2" className="font-display text-3xl font-bold leading-tight tracking-tight text-navy-800 sm:text-4xl">

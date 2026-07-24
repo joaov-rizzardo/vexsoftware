@@ -66,7 +66,7 @@ export default function Process() {
 
   return (
     <section id="processo" className="relative bg-white py-24">
-      <div className="mx-auto max-w-7xl px-6 lg:px-10">
+      <div className="container-page">
         <Reveal as="h2" className="text-center font-display text-3xl font-bold tracking-tight text-navy-800 sm:text-4xl">
           Como funciona o nosso <span className="text-brand-500">processo</span>
         </Reveal>

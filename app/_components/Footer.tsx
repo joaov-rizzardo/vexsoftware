@@ -35,7 +35,7 @@ export default function Footer() {
   return (
     <footer className="relative overflow-hidden bg-navy-900 pt-16 text-slate-400">
       <div className="bg-grid pointer-events-none absolute inset-0 opacity-30" />
-      <div className="relative mx-auto max-w-7xl px-6 lg:px-10">
+      <div className="relative container-page">
         <div className="grid gap-12 pb-12 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1.2fr]">
           {/* Brand */}
           <div>

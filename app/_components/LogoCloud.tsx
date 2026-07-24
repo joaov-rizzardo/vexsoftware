@@ -16,7 +16,7 @@ const brands = [
 export default function LogoCloud() {
   return (
     <section id="projetos" className="relative bg-white py-20">
-      <div className="mx-auto max-w-7xl px-6 lg:px-10">
+      <div className="container-page">
         <Reveal as="h2" className="text-center font-display text-2xl font-bold tracking-tight text-navy-800 sm:text-3xl">
           Empresas que confiam no nosso trabalho
         </Reveal>
