@@ -6,12 +6,11 @@ import { IconMenu, IconClose, IconArrowRight } from "./icons";
 
 const links = [
   { label: "Início", href: "#inicio" },
+  { label: "Sobre nós", href: "#sobre" },
   { label: "Soluções", href: "#solucoes" },
-  { label: "Projetos", href: "#projetos" },
   { label: "Como funciona", href: "#processo" },
   { label: "Depoimentos", href: "#depoimentos" },
-  { label: "Sobre nós", href: "#sobre" },
-  { label: "Blog", href: "#blog" },
+  { label: "Perguntas frequentes", href: "#blog" },
 ];
 
 function Logo() {
@@ -28,6 +27,32 @@ function Logo() {
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [instantClose, setInstantClose] = useState(false);
+
+  const closeForNavigation = (href: string) => () => {
+    // Collapsing the menu immediately fights the browser's scroll-to-anchor:
+    // it cancels the in-flight smooth scroll. If a scroll will actually
+    // happen, wait for it to settle before closing the menu.
+    const target = document.querySelector(href);
+    const needsScroll = target && Math.abs(target.getBoundingClientRect().top) > 2;
+
+    if (!needsScroll) {
+      setInstantClose(true);
+      setOpen(false);
+      return;
+    }
+
+    let closed = false;
+    const close = () => {
+      if (closed) return;
+      closed = true;
+      setInstantClose(true);
+      setOpen(false);
+      window.removeEventListener("scrollend", close);
+    };
+    window.addEventListener("scrollend", close, { once: true });
+    setTimeout(close, 2000);
+  };
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -76,7 +101,10 @@ export default function Navbar() {
 
         <button
           type="button"
-          onClick={() => setOpen((v) => !v)}
+          onClick={() => {
+            setInstantClose(false);
+            setOpen((v) => !v);
+          }}
           aria-label="Abrir menu"
           aria-expanded={open}
           className="inline-flex h-10 w-10 items-center justify-center rounded-lg text-white ring-1 ring-white/15 lg:hidden"
@@ -91,7 +119,7 @@ export default function Navbar() {
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.3, ease: "easeInOut" }}
+            transition={{ duration: instantClose ? 0 : 0.3, ease: "easeInOut" }}
             className="overflow-hidden border-t border-white/10 bg-navy-800/95 backdrop-blur-xl lg:hidden"
           >
             <ul className="flex flex-col gap-1 px-6 py-4">
@@ -99,7 +127,7 @@ export default function Navbar() {
                 <li key={link.label}>
                   <a
                     href={link.href}
-                    onClick={() => setOpen(false)}
+                    onClick={closeForNavigation(link.href)}
                     className="block rounded-lg px-3 py-2.5 text-slate-200 transition-colors hover:bg-white/5 hover:text-white"
                   >
                     {link.label}
@@ -109,7 +137,7 @@ export default function Navbar() {
               <li className="mt-2">
                 <a
                   href="#contato"
-                  onClick={() => setOpen(false)}
+                  onClick={closeForNavigation("#contato")}
                   className="flex items-center justify-center gap-2 rounded-lg bg-brand-600 px-5 py-3 font-medium text-white"
                 >
                   Solicitar orçamento
