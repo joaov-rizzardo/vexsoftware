@@ -9,6 +9,7 @@ import Testimonials from "./_components/Testimonials";
 import LogoCloud from "./_components/LogoCloud";
 import Faq from "./_components/Faq";
 import CtaBanner from "./_components/CtaBanner";
+import ContactForm from "./_components/ContactForm";
 import Footer from "./_components/Footer";
 import WhatsAppFloat from "./_components/WhatsAppFloat";
 
@@ -26,6 +27,7 @@ export default function Home() {
         <Testimonials />
         <Faq />
         <CtaBanner />
+        <ContactForm />
       </main>
       <Footer />
       <WhatsAppFloat />

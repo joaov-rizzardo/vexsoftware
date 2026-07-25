@@ -207,6 +207,20 @@ export const IconSparkles = (p: IconProps) => (
   </svg>
 );
 
+export const IconUser = (p: IconProps) => (
+  <svg {...base} {...p}>
+    <circle cx="12" cy="8" r="3.5" />
+    <path d="M4.5 20a7.5 7.5 0 0 1 15 0" />
+  </svg>
+);
+
+export const IconTag = (p: IconProps) => (
+  <svg {...base} {...p}>
+    <path d="M3 11.5V5a2 2 0 0 1 2-2h6.5a2 2 0 0 1 1.4.6l8 8a2 2 0 0 1 0 2.8l-6.5 6.5a2 2 0 0 1-2.8 0l-8-8A2 2 0 0 1 3 11.5Z" />
+    <path d="M8 8h.01" />
+  </svg>
+);
+
 export const IconMail = (p: IconProps) => (
   <svg {...base} {...p}>
     <rect x="3" y="5" width="18" height="14" rx="2" />

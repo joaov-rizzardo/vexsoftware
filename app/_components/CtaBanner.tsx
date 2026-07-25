@@ -27,7 +27,7 @@ export default function CtaBanner() {
                 </div>
               </div>
               <a
-                href="#"
+                href="#fale-conosco"
                 className="group inline-flex shrink-0 cursor-pointer items-center gap-2 rounded-xl bg-accent-500 px-6 py-3.5 font-semibold text-white shadow-lg shadow-green-900/30 transition-all hover:-translate-y-0.5 hover:bg-accent-400"
               >
                 Quero um orçamento
