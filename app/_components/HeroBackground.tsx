@@ -103,12 +103,18 @@ function FloatingSolid({
 }
 
 function Scene() {
+  // Position the solids as fractions of the current viewport so they stay
+  // on screen on narrow/tall aspect ratios instead of falling outside the frustum.
+  const { viewport } = useThree();
+  const hw = viewport.width / 2;
+  const hh = viewport.height / 2;
+
   return (
     <>
       <ParticleField />
-      <FloatingSolid position={[-7, 2.4, -2]} scale={1.5} speed={0.25} geometry="ico" />
-      <FloatingSolid position={[7.5, -2.2, -1]} scale={1.1} speed={0.3} geometry="octa" />
-      <FloatingSolid position={[5.5, 3, -3]} scale={0.9} speed={0.2} geometry="torus" />
+      <FloatingSolid position={[-hw * 0.85, hh * 0.5, -2]} scale={1.5} speed={0.25} geometry="ico" />
+      <FloatingSolid position={[hw * 0.9, -hh * 0.45, -1]} scale={1.1} speed={0.3} geometry="octa" />
+      <FloatingSolid position={[hw * 0.65, hh * 0.6, -3]} scale={0.9} speed={0.2} geometry="torus" />
     </>
   );
 }

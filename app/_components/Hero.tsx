@@ -92,8 +92,8 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Devices */}
-          <div className="relative">
+          {/* Devices — hidden on small screens where there's no room beside the copy */}
+          <div className="relative hidden lg:block">
             <DeviceMockup />
           </div>
         </div>
