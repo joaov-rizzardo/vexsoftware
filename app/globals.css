@@ -150,12 +150,6 @@ body {
   -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, #000 40%, transparent 100%);
 }
 
-/* Fades the left/right edges of a horizontal marquee track */
-.mask-fade-x {
-  mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
-  -webkit-mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
-}
-
 .text-gradient {
   background: linear-gradient(120deg, var(--blue-400), var(--blue-300) 60%, #fff);
   -webkit-background-clip: text;
