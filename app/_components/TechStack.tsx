@@ -69,7 +69,7 @@ const categories: Category[] = [
 
 function TechLogo({ tech }: { tech: Tech }) {
   return (
-    <li className="group/logo flex w-[4.5rem] flex-col items-center gap-2 rounded-xl px-1 py-3 transition-colors duration-300 hover:bg-slate-50 sm:w-20">
+    <li className="group/logo flex w-full min-w-0 flex-col items-center gap-1.5 rounded-xl px-0 py-3 transition-colors duration-300 hover:bg-slate-50 sm:gap-2 sm:px-1 lg:w-20">
       <img
         src={`/tech-logos/${tech.logo}.svg`}
         alt=""
@@ -78,9 +78,9 @@ function TechLogo({ tech }: { tech: Tech }) {
         height={36}
         loading="lazy"
         decoding="async"
-        className="h-9 w-9 object-contain transition-transform duration-300 group-hover/logo:-translate-y-0.5 group-hover/logo:scale-110"
+        className="h-7 w-7 object-contain transition-transform duration-300 group-hover/logo:-translate-y-0.5 group-hover/logo:scale-110 sm:h-9 sm:w-9"
       />
-      <span className="text-center text-[11px] font-medium leading-tight text-slate-500 sm:text-xs">
+      <span className="text-center text-[10px] font-medium leading-tight text-slate-500 sm:text-xs">
         {tech.name}
       </span>
     </li>
@@ -138,7 +138,9 @@ export default function TechStack() {
                       </div>
                     </div>
 
-                    <ul className="flex flex-wrap justify-center gap-1 border-t border-slate-200/80 pt-4 sm:gap-2 lg:w-[27rem] lg:justify-end lg:border-l lg:border-t-0 lg:pl-10 lg:pt-0">
+                    {/* Grid de 4 colunas fluidas até lg; no lg vira flex para
+                        encostar à direita do card. */}
+                    <ul className="grid grid-cols-4 gap-0.5 border-t border-slate-200/80 pt-4 sm:gap-2 lg:flex lg:w-[27rem] lg:justify-end lg:border-l lg:border-t-0 lg:pl-10 lg:pt-0">
                       {cat.techs.map((tech) => (
                         <TechLogo key={tech.name} tech={tech} />
                       ))}
