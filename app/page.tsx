@@ -24,8 +24,8 @@ export default function Home() {
         <Services />
         <Stats />
         <Process />
-        <Testimonials />
         <TechStack />
+        <Testimonials />
         <Faq />
         <ContactForm />
       </main>

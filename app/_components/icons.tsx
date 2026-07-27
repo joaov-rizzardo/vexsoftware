@@ -47,6 +47,20 @@ export const IconPuzzle = (p: IconProps) => (
   </svg>
 );
 
+export const IconDatabase = (p: IconProps) => (
+  <svg {...base} {...p}>
+    <ellipse cx="12" cy="6" rx="8" ry="3" />
+    <path d="M4 6v6c0 1.66 3.58 3 8 3s8-1.34 8-3V6" />
+    <path d="M4 12v6c0 1.66 3.58 3 8 3s8-1.34 8-3v-6" />
+  </svg>
+);
+
+export const IconCloud = (p: IconProps) => (
+  <svg {...base} {...p}>
+    <path d="M7 18a4 4 0 0 1-.4-7.98 5.5 5.5 0 0 1 10.55-1.4A4.25 4.25 0 0 1 17.5 18H7Z" />
+  </svg>
+);
+
 export const IconWrench = (p: IconProps) => (
   <svg {...base} {...p}>
     <path d="M14.7 6.3a4 4 0 0 0-5.6 4.6L3 17l4 4 6.1-6.1a4 4 0 0 0 4.6-5.6l-2.8 2.8-2.8-.8-.8-2.8 2.6-2.2Z" />

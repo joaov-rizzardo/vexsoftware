@@ -255,13 +255,12 @@ export default function Testimonials() {
           delay={0.08}
           className="mt-5 text-center font-display text-3xl font-bold tracking-tight text-navy-800 sm:text-4xl"
         >
-          Veja o que nossos clientes dizem após contratar a <span className="text-brand-500">VEX</span>
+          Quem já trabalha com a <span className="text-brand-500">VEX</span>
         </Reveal>
 
         <Reveal delay={0.14}>
           <p className="mx-auto mt-4 max-w-xl text-center text-slate-500">
-            Empresas de verdade, resultados de verdade. Veja o que nossos clientes
-            dizem depois de tirar o negócio do improviso.
+            Veja o que nossos clientes dizem após contratar a VEX.
           </p>
         </Reveal>
 

@@ -67,12 +67,11 @@ export default function Services() {
     <section id="solucoes" className="relative bg-slate-50 py-24">
       <div className="container-page">
         <Reveal as="h2" className="text-center font-display text-3xl font-bold tracking-tight text-navy-800 sm:text-4xl">
-          Tecnologias para cada necessidade do <span className="text-brand-500">seu negócio</span>
+          Como podemos ajudar <span className="text-brand-500">sua empresa</span>
         </Reveal>
         <Reveal delay={0.1}>
           <p className="mx-auto mt-4 max-w-xl text-center text-slate-500">
-            Soluções completas de tecnologia para tirar sua empresa do improviso e
-            colocá-la para escalar.
+            Tecnologias para cada necessidade do seu negócio.
           </p>
         </Reveal>
 

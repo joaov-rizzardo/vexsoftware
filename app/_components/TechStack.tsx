@@ -1,103 +1,154 @@
 "use client";
 
-import type { CSSProperties } from "react";
-import { Reveal } from "./Reveal";
+import type { ComponentType, SVGProps } from "react";
+import { Reveal, StaggerGroup, StaggerItem } from "./Reveal";
+import { IconGlobe, IconPhone, IconDatabase, IconCloud, IconCode } from "./icons";
 
-type Tech = { name: string; logo: string; color: string };
+type Tech = { name: string; logo: string };
 
-const techs: Tech[] = [
-  { name: "React", logo: "react", color: "#61DAFB" },
-  { name: "Next.js", logo: "nextjs", color: "#F0F0F8" },
-  { name: "TypeScript", logo: "typescript", color: "#3178C6" },
-  { name: "Node.js", logo: "nodejs", color: "#68A063" },
-  { name: "React Native", logo: "react-native", color: "#61DAFB" },
-  { name: "PostgreSQL", logo: "postgresql", color: "#336791" },
-  { name: "MongoDB", logo: "mongodb", color: "#47A248" },
-  { name: "Firebase", logo: "firebase", color: "#FFA000" },
-  { name: "Docker", logo: "docker", color: "#2496ED" },
-  { name: "AWS", logo: "aws", color: "#FF9900" },
-  { name: "Redis", logo: "redis", color: "#DC382D" },
-  { name: "Git", logo: "git", color: "#F05032" },
-  { name: "Tailwind", logo: "tailwind", color: "#06B6D4" },
-  { name: ".NET", logo: "dotnet", color: "#512BD4" },
-  { name: "PHP", logo: "php", color: "#777BB4" },
-  { name: "Angular", logo: "angular", color: "#DD0031" },
+type Category = {
+  icon: ComponentType<SVGProps<SVGSVGElement>>;
+  /* Gradiente do quadrado do ícone: azul da marca no primeiro card e tons de
+     apoio nos demais, só para diferenciar as áreas. */
+  gradient: string;
+  title: string;
+  desc: string;
+  techs: Tech[];
+};
+
+const categories: Category[] = [
+  {
+    icon: IconGlobe,
+    gradient: "from-brand-500 to-brand-600",
+    title: "Desenvolvimento Web",
+    desc: "Aplicações rápidas, responsivas e modernas para web.",
+    techs: [
+      { name: "React", logo: "react" },
+      { name: "Next.js", logo: "nextjs" },
+      { name: "Angular", logo: "angular" },
+      { name: "Tailwind", logo: "tailwind" },
+    ],
+  },
+  {
+    icon: IconPhone,
+    gradient: "from-violet-500 to-purple-600",
+    title: "Sistemas e Aplicativos",
+    desc: "Sistemas robustos e escaláveis para diferentes necessidades.",
+    techs: [
+      { name: "Node.js", logo: "nodejs" },
+      { name: ".NET", logo: "dotnet" },
+      { name: "PHP", logo: "php" },
+      { name: "React Native", logo: "react-native" },
+    ],
+  },
+  {
+    icon: IconDatabase,
+    gradient: "from-teal-500 to-emerald-600",
+    title: "Dados e Armazenamento",
+    desc: "Bancos de dados seguros, rápidos e preparados para crescer.",
+    techs: [
+      { name: "PostgreSQL", logo: "postgresql" },
+      { name: "MongoDB", logo: "mongodb" },
+      { name: "Redis", logo: "redis" },
+      { name: "Firebase", logo: "firebase" },
+    ],
+  },
+  {
+    icon: IconCloud,
+    gradient: "from-rose-500 to-pink-600",
+    title: "Nuvem e Infraestrutura",
+    desc: "Publicação em nuvem, ambientes isolados e versionamento do código.",
+    techs: [
+      { name: "AWS", logo: "aws" },
+      { name: "Vercel", logo: "vercel" },
+      { name: "Docker", logo: "docker" },
+      { name: "Git", logo: "git" },
+    ],
+  },
 ];
 
-function MarqueeRow({
-  techs,
-  reverse,
-  duration,
-  delay = 0,
-}: {
-  techs: Tech[];
-  reverse?: boolean;
-  duration: number;
-  delay?: number;
-}) {
-  const items = [...techs, ...techs];
-
+function TechLogo({ tech }: { tech: Tech }) {
   return (
-    <div className="group relative">
-      <div
-        className="flex w-max animate-marquee gap-4 group-hover:[animation-play-state:paused]"
-        style={{
-          animation: `marquee ${duration}s linear infinite`,
-          animationDirection: reverse ? "reverse" : "normal",
-          animationDelay: `${delay}s`,
-        }}
-      >
-        {items.map((tech, i) => (
-          <div
-            key={`${tech.name}-${i}`}
-            aria-hidden={i >= techs.length}
-            title={tech.name}
-            className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-white/5 ring-1 ring-white/10 transition-all duration-300 hover:-translate-y-1 hover:bg-white/10 hover:shadow-[0_0_24px_-4px_var(--tech-c)]"
-            style={{ "--tech-c": tech.color } as CSSProperties}
-          >
-            <img
-              src={`/tech-logos/${tech.logo}.svg`}
-              alt={tech.name}
-              width={28}
-              height={28}
-              className="h-7 w-7 object-contain"
-            />
-          </div>
-        ))}
-      </div>
-    </div>
+    <li className="group/logo flex w-[4.5rem] flex-col items-center gap-2 rounded-xl px-1 py-3 transition-colors duration-300 hover:bg-slate-50 sm:w-20">
+      <img
+        src={`/tech-logos/${tech.logo}.svg`}
+        alt=""
+        aria-hidden="true"
+        width={36}
+        height={36}
+        loading="lazy"
+        decoding="async"
+        className="h-9 w-9 object-contain transition-transform duration-300 group-hover/logo:-translate-y-0.5 group-hover/logo:scale-110"
+      />
+      <span className="text-center text-[11px] font-medium leading-tight text-slate-500 sm:text-xs">
+        {tech.name}
+      </span>
+    </li>
   );
 }
 
 export default function TechStack() {
   return (
-    <section className="relative bg-white py-24">
+    <section className="relative bg-gradient-to-b from-white via-brand-50/50 to-white py-24">
       <div className="container-page">
-        <Reveal
-          as="h2"
-          className="text-center font-display text-3xl font-bold tracking-tight text-navy-800 sm:text-4xl"
-        >
-          Tecnologias que <span className="text-brand-500">dominamos</span>
-        </Reveal>
-        <Reveal delay={0.1}>
-          <p className="mx-auto mt-4 max-w-xl text-center text-slate-500">
-            Ferramentas modernas e comprovadas para construir produtos rápidos, seguros e prontos para escalar.
-          </p>
-        </Reveal>
+        <div className="mx-auto max-w-6xl">
+          <Reveal className="flex justify-center">
+            <p className="inline-flex items-center gap-2 rounded-full border border-brand-100 bg-white px-3 py-1.5 text-xs font-medium text-brand-600 shadow-soft">
+              <IconCode aria-hidden="true" className="h-4 w-4" />
+              Tecnologias que dominamos
+            </p>
+          </Reveal>
 
-        <Reveal
-          delay={0.15}
-          className="relative mt-14 overflow-hidden rounded-3xl bg-[radial-gradient(120%_140%_at_0%_0%,#12275a_0%,#0a1124_60%)] py-10 shadow-glow ring-1 ring-white/10 sm:py-12"
-        >
-          <div className="bg-grid pointer-events-none absolute inset-0 opacity-40" />
+          <Reveal
+            as="h2"
+            delay={0.08}
+            className="mt-5 text-center font-display text-3xl font-bold tracking-tight text-navy-800 sm:text-4xl"
+          >
+            Tecnologia que transforma ideias em{" "}
+            <span className="text-brand-500">resultados.</span>
+          </Reveal>
 
-          <div className="relative flex flex-col gap-4">
-            <MarqueeRow techs={techs} duration={36} />
-          </div>
+          <Reveal delay={0.14}>
+            <p className="mx-auto mt-4 max-w-xl text-center text-slate-500">
+              Ferramentas modernas, confiáveis e escaláveis para construir
+              produtos rápidos, seguros e prontos para crescer junto com o seu
+              negócio.
+            </p>
+          </Reveal>
 
-          <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-gradient-to-r from-navy-800 to-transparent sm:w-32" />
-          <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l from-navy-800 to-transparent sm:w-32" />
-        </Reveal>
+          <StaggerGroup className="mt-12 flex flex-col gap-4">
+            {categories.map((cat) => {
+              const Icon = cat.icon;
+              return (
+                <StaggerItem key={cat.title}>
+                  <article className="card-hover grid gap-4 rounded-2xl border border-slate-200 bg-white p-6 shadow-soft sm:p-7 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-center lg:gap-10">
+                    <div className="flex items-start gap-5">
+                      <span
+                        className={`inline-flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br ${cat.gradient} text-white shadow-soft`}
+                      >
+                        <Icon className="h-6 w-6" />
+                      </span>
+                      <div className="min-w-0">
+                        <h3 className="font-display text-lg font-semibold text-navy-800">
+                          {cat.title}
+                        </h3>
+                        <p className="mt-1.5 text-sm leading-relaxed text-slate-500">
+                          {cat.desc}
+                        </p>
+                      </div>
+                    </div>
+
+                    <ul className="flex flex-wrap justify-center gap-1 border-t border-slate-200/80 pt-4 sm:gap-2 lg:w-[27rem] lg:justify-end lg:border-l lg:border-t-0 lg:pl-10 lg:pt-0">
+                      {cat.techs.map((tech) => (
+                        <TechLogo key={tech.name} tech={tech} />
+                      ))}
+                    </ul>
+                  </article>
+                </StaggerItem>
+              );
+            })}
+          </StaggerGroup>
+        </div>
       </div>
     </section>
   );
