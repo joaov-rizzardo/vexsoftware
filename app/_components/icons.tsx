@@ -47,6 +47,12 @@ export const IconPuzzle = (p: IconProps) => (
   </svg>
 );
 
+export const IconWrench = (p: IconProps) => (
+  <svg {...base} {...p}>
+    <path d="M14.7 6.3a4 4 0 0 0-5.6 4.6L3 17l4 4 6.1-6.1a4 4 0 0 0 4.6-5.6l-2.8 2.8-2.8-.8-.8-2.8 2.6-2.2Z" />
+  </svg>
+);
+
 export const IconBars = (p: IconProps) => (
   <svg {...base} {...p}>
     <path d="M3 21h18" />

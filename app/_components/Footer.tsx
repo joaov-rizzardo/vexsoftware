@@ -1,42 +1,25 @@
-import {
-  IconPhoneCall,
-  IconMail,
-  IconMapPin,
-  IconInstagram,
-  IconLinkedin,
-  IconWhatsApp,
-} from "./icons";
+import { IconPhoneCall, IconMail, IconMapPin, IconWhatsApp } from "./icons";
+import { links } from "./nav-links";
 
-const nav = {
-  Navegação: ["Início", "Soluções", "Projetos", "Como funciona", "Sobre nós", "Blog"],
-  Soluções: [
-    "Sites",
-    "Sistemas de gestão",
-    "Automação de WhatsApp",
-    "Agendamento online",
-    "Integrações",
-    "Aplicativos",
-  ],
-};
+const navLinks = links.filter((link) => link.label !== "Soluções");
 
 const contacts = [
-  { icon: IconPhoneCall, text: "(12) 98234-5678" },
+  { icon: IconPhoneCall, text: "(12) 99709-6351" },
   { icon: IconMail, text: "contato@vexsoftware.com.br" },
-  { icon: IconMapPin, text: "Taubaté - SP" },
+  { icon: IconMapPin, text: "Cachoeira Paulista - SP" },
 ];
 
-const socials = [
-  { icon: IconInstagram, label: "Instagram" },
-  { icon: IconLinkedin, label: "LinkedIn" },
-  { icon: IconWhatsApp, label: "WhatsApp" },
-];
+const WHATSAPP_PHONE = "5512997096351";
+const WHATSAPP_MESSAGE =
+  "Olá! Vim pelo site da VEX Software e gostaria de solicitar um orçamento.";
+const WHATSAPP_HREF = `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
 
 export default function Footer() {
   return (
     <footer className="relative overflow-hidden bg-navy-900 pt-16 text-slate-400">
       <div className="bg-grid pointer-events-none absolute inset-0 opacity-30" />
       <div className="relative container-page">
-        <div className="grid gap-12 pb-12 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1.2fr]">
+        <div className="grid gap-12 pb-12 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1.2fr]">
           {/* Brand */}
           <div>
             <div className="flex flex-col leading-none">
@@ -53,21 +36,19 @@ export default function Footer() {
             </p>
           </div>
 
-          {/* Nav columns */}
-          {Object.entries(nav).map(([title, items]) => (
-            <div key={title}>
-              <h3 className="font-display text-sm font-semibold text-white">{title}</h3>
-              <ul className="mt-4 space-y-2.5 text-sm">
-                {items.map((item) => (
-                  <li key={item}>
-                    <a href="#" className="transition-colors hover:text-brand-400">
-                      {item}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
+          {/* Navegação */}
+          <div>
+            <h3 className="font-display text-sm font-semibold text-white">Navegação</h3>
+            <ul className="mt-4 space-y-2.5 text-sm">
+              {navLinks.map((link) => (
+                <li key={link.label}>
+                  <a href={link.href} className="transition-colors hover:text-brand-400">
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
 
           {/* Contact */}
           <div>
@@ -83,21 +64,15 @@ export default function Footer() {
                 );
               })}
             </ul>
-            <div className="mt-5 flex gap-3">
-              {socials.map((s) => {
-                const Icon = s.icon;
-                return (
-                  <a
-                    key={s.label}
-                    href="#"
-                    aria-label={s.label}
-                    className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-white/5 text-slate-300 ring-1 ring-white/10 transition-all hover:-translate-y-0.5 hover:bg-brand-600 hover:text-white"
-                  >
-                    <Icon className="h-5 w-5" />
-                  </a>
-                );
-              })}
-            </div>
+            <a
+              href={WHATSAPP_HREF}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-5 inline-flex items-center gap-2 rounded-lg bg-gradient-to-br from-accent-400 to-accent-500 px-5 py-2.5 text-sm font-medium text-white shadow-lg shadow-green-900/30 transition-all hover:-translate-y-0.5 hover:shadow-green-500/40"
+            >
+              <IconWhatsApp className="h-4 w-4" />
+              Falar no WhatsApp
+            </a>
           </div>
         </div>
 

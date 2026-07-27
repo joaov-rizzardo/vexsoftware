@@ -24,7 +24,7 @@ const faqs = [
   },
   {
     q: "Vocês oferecem suporte?",
-    a: "Sim! Oferecemos suporte contínuo e próximo para garantir que tudo funcione sempre da melhor forma.",
+    a: "Sim! Oferecemos suporte personalizado e rápido por 2 meses após a entrega final do sistema, para garantir que tudo funcione da melhor forma.",
   },
   {
     q: "Meus dados ficam seguros?",

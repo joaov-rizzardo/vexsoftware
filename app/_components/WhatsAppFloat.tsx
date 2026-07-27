@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { IconWhatsApp, IconClose } from "./icons";
 
-const PHONE = "5512982345678";
+const PHONE = "5512997096351";
 const MESSAGE =
   "Olá! Vim pelo site da VEX Software e gostaria de solicitar um orçamento.";
 const HREF = `https://wa.me/${PHONE}?text=${encodeURIComponent(MESSAGE)}`;

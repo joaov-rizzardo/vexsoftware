@@ -3,15 +3,7 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { IconMenu, IconClose, IconArrowRight } from "./icons";
-
-const links = [
-  { label: "Início", href: "#inicio" },
-  { label: "Sobre nós", href: "#sobre" },
-  { label: "Soluções", href: "#solucoes" },
-  { label: "Como funciona", href: "#processo" },
-  { label: "Depoimentos", href: "#depoimentos" },
-  { label: "Perguntas frequentes", href: "#blog" },
-];
+import { links } from "./nav-links";
 
 function Logo() {
   return (
@@ -92,7 +84,7 @@ export default function Navbar() {
         </ul>
 
         <a
-          href="#contato"
+          href="#fale-conosco"
           className="group hidden cursor-pointer items-center gap-2 rounded-lg bg-brand-600 px-5 py-2.5 text-sm font-medium text-white shadow-lg shadow-blue-900/40 transition-all hover:-translate-y-0.5 hover:bg-brand-500 hover:shadow-blue-500/40 lg:inline-flex"
         >
           Solicitar orçamento
@@ -136,8 +128,8 @@ export default function Navbar() {
               ))}
               <li className="mt-2">
                 <a
-                  href="#contato"
-                  onClick={closeForNavigation("#contato")}
+                  href="#fale-conosco"
+                  onClick={closeForNavigation("#fale-conosco")}
                   className="flex items-center justify-center gap-2 rounded-lg bg-brand-600 px-5 py-3 font-medium text-white"
                 >
                   Solicitar orçamento

@@ -20,7 +20,7 @@ const steps = [
   { icon: IconCode, title: "Desenvolvemos", desc: "Nossa equipe transforma o plano em um sistema sob medida." },
   { icon: IconEye, title: "Você acompanha tudo", desc: "Acompanhe cada etapa com total transparência." },
   { icon: IconRocket, title: "Fazemos implantação", desc: "Implantamos, testamos e treinamos sua equipe." },
-  { icon: IconHeadset, title: "Damos suporte", desc: "Suporte próximo e rápido sempre que precisar." },
+  { icon: IconHeadset, title: "Damos suporte", desc: "Suporte personalizado e rápido." },
 ];
 
 export default function Process() {

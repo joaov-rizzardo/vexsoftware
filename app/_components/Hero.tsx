@@ -13,7 +13,7 @@ gsap.registerPlugin(useGSAP);
 
 const bullets = [
   "Soluções sob medida",
-  "Suporte próximo e rápido",
+  "Suporte personalizado e rápido",
   "Tecnologia que cresce com você",
   "Seu negócio mais eficiente",
 ];
@@ -77,17 +77,11 @@ export default function Hero() {
             {/* Animated as one element so both buttons always appear together */}
             <div className="hero-cta mt-7 flex flex-wrap gap-3">
               <a
-                href="#contato"
+                href="#fale-conosco"
                 className="group flex cursor-pointer items-center gap-2 rounded-xl bg-brand-600 px-5 py-3 text-sm font-medium text-white shadow-lg shadow-blue-900/40 transition-all hover:-translate-y-0.5 hover:bg-brand-500 hover:shadow-blue-500/50"
               >
                 Solicitar orçamento
                 <IconArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </a>
-              <a
-                href="#projetos"
-                className="cursor-pointer rounded-xl border border-white/20 bg-white/5 px-5 py-3 text-sm font-medium text-white backdrop-blur-sm transition-colors hover:bg-white/10"
-              >
-                Ver nossos projetos
               </a>
             </div>
           </div>
@@ -100,7 +94,7 @@ export default function Hero() {
 
         {/* Trust bullets — single inline row when there's space, wraps gracefully */}
         <div className="container-page mt-10 lg:mt-12">
-          <div className="flex flex-wrap items-center justify-center gap-x-7 gap-y-3 border-t border-white/10 pt-5 text-[0.8rem] text-slate-300 lg:justify-start">
+          <div className="flex flex-wrap items-center justify-start gap-x-7 gap-y-3 border-t border-white/10 pt-5 text-[0.8rem] text-slate-300 lg:justify-start">
             {bullets.map((b) => (
               <span key={b} className="hero-bullet flex items-center gap-2 whitespace-nowrap">
                 <IconCheckCircle className="h-5 w-5 shrink-0 text-accent-400" />

@@ -16,10 +16,10 @@ type Stat = {
 };
 
 const stats: Stat[] = [
-  { icon: IconUsersGear, end: 120, suffix: "+", label: "Projetos entregues" },
+  { icon: IconUsersGear, end: 89, suffix: "+", label: "Projetos entregues" },
   { icon: IconClock, end: 5, suffix: "+ anos", label: "De experiência" },
-  { icon: IconSmile, end: 80, suffix: "+", label: "Clientes atendidos" },
-  { icon: IconStar, end: 98, suffix: "%", label: "Clientes satisfeitos" },
+  { icon: IconSmile, end: 68, suffix: "+", label: "Clientes atendidos" },
+  { icon: IconStar, end: 98, suffix: "%", label: "Dos prazos cumpridos" },
 ];
 
 export default function Stats() {

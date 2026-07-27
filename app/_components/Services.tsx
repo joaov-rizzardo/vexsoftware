@@ -7,7 +7,7 @@ import {
   IconMonitor,
   IconCalendar,
   IconChat,
-  IconPuzzle,
+  IconWrench,
   IconBars,
   IconPhone,
   IconUsersGear,
@@ -41,9 +41,9 @@ const services: Service[] = [
     desc: "Atenda mais clientes, responda automaticamente e venda mais pelo WhatsApp.",
   },
   {
-    icon: IconPuzzle,
-    title: "Integrações",
-    desc: "Integramos seu sistema com WhatsApp, ERP, gateways de pagamento e muito mais.",
+    icon: IconWrench,
+    title: "Manutenção e evolução",
+    desc: "Corrigimos bugs, atualizamos e adicionamos novas funcionalidades a sites e sistemas que já existem.",
   },
   {
     icon: IconBars,
@@ -67,7 +67,7 @@ export default function Services() {
     <section id="solucoes" className="relative bg-slate-50 py-24">
       <div className="container-page">
         <Reveal as="h2" className="text-center font-display text-3xl font-bold tracking-tight text-navy-800 sm:text-4xl">
-          Como podemos <span className="text-brand-500">ajudar</span>
+          Tecnologias para cada necessidade do <span className="text-brand-500">seu negócio</span>
         </Reveal>
         <Reveal delay={0.1}>
           <p className="mx-auto mt-4 max-w-xl text-center text-slate-500">

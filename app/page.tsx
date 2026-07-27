@@ -7,8 +7,8 @@ import Stats from "./_components/Stats";
 import Process from "./_components/Process";
 import Testimonials from "./_components/Testimonials";
 import LogoCloud from "./_components/LogoCloud";
+import TechStack from "./_components/TechStack";
 import Faq from "./_components/Faq";
-import CtaBanner from "./_components/CtaBanner";
 import ContactForm from "./_components/ContactForm";
 import Footer from "./_components/Footer";
 import WhatsAppFloat from "./_components/WhatsAppFloat";
@@ -25,8 +25,8 @@ export default function Home() {
         <Stats />
         <Process />
         <Testimonials />
+        <TechStack />
         <Faq />
-        <CtaBanner />
         <ContactForm />
       </main>
       <Footer />

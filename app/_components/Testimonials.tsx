@@ -15,8 +15,6 @@ import {
   IconCheckCircle,
   IconChevronLeft,
   IconChevronRight,
-  IconPause,
-  IconPlay,
 } from "./icons";
 
 type Testimonial = {
@@ -140,7 +138,6 @@ export default function Testimonials() {
 
   const [perView, setPerView] = useState(3);
   const [rawIndex, setIndex] = useState(0);
-  const [playing, setPlaying] = useState(true);
   const [interacting, setInteracting] = useState(false);
   const [viewportWidth, setViewportWidth] = useState(0);
 
@@ -153,7 +150,7 @@ export default function Testimonials() {
   const index = Math.min(rawIndex, maxIndex);
   /* Deslocamento de um card = (largura visível + gap) / cards por vez. */
   const step = viewportWidth ? (viewportWidth + SLIDE_GAP) / perView : 0;
-  const autoplayOn = playing && !interacting && !reduce && maxIndex > 0;
+  const autoplayOn = !interacting && !reduce && maxIndex > 0;
 
   /* Cards visíveis por breakpoint: 1 (mobile) / 2 (sm) / 3 (lg). */
   useEffect(() => {
@@ -198,6 +195,15 @@ export default function Testimonials() {
     [maxIndex, reduce, step, x],
   );
 
+  /* Ref sempre com a versão mais recente de slideTo: o timer de autoplay a
+     lê por aqui em vez de depender da função diretamente, para que a troca
+     de identidade dela (ex.: `step` recalculado por um resize do trilho) não
+     cancele e reagende o timer sem uma mudança real de slide. */
+  const slideToRef = useRef(slideTo);
+  useEffect(() => {
+    slideToRef.current = slideTo;
+  }, [slideTo]);
+
   /* Reposiciona sem animar quando a largura ou o nº de cards muda (medição
      inicial, resize, rotação do device). Mudanças de índice animam em slideTo. */
   const lastLayout = useRef({ step, perView });
@@ -209,12 +215,14 @@ export default function Testimonials() {
     animateValue(x, -index * step, { duration: 0 });
   }, [index, perView, step, x]);
 
-  /* Autoplay — pausa no hover, no foco, durante o arraste e com reduced motion. */
+  /* Autoplay — pausa no hover/foco do trilho, durante o arraste e com
+     reduced motion. Usa slideToRef (não slideTo) para não reagendar o timer
+     quando só a identidade da função muda. */
   useEffect(() => {
     if (!autoplayOn) return;
-    const timer = window.setTimeout(() => slideTo(index + 1), AUTOPLAY_MS);
+    const timer = window.setTimeout(() => slideToRef.current(index + 1), AUTOPLAY_MS);
     return () => window.clearTimeout(timer);
-  }, [autoplayOn, index, slideTo]);
+  }, [autoplayOn, index]);
 
   const handleDragEnd = (_: unknown, info: PanInfo) => {
     setInteracting(false);
@@ -247,7 +255,7 @@ export default function Testimonials() {
           delay={0.08}
           className="mt-5 text-center font-display text-3xl font-bold tracking-tight text-navy-800 sm:text-4xl"
         >
-          Quem já trabalha com a <span className="text-brand-500">VEX</span>
+          Veja o que nossos clientes dizem após contratar a <span className="text-brand-500">VEX</span>
         </Reveal>
 
         <Reveal delay={0.14}>
@@ -263,10 +271,6 @@ export default function Testimonials() {
             role="group"
             aria-roledescription="carrossel"
             aria-label="Depoimentos de clientes"
-            onMouseEnter={() => setInteracting(true)}
-            onMouseLeave={() => setInteracting(false)}
-            onFocusCapture={() => setInteracting(true)}
-            onBlurCapture={() => setInteracting(false)}
             onKeyDown={(event) => {
               if (event.key === "ArrowRight") {
                 event.preventDefault();
@@ -281,6 +285,10 @@ export default function Testimonials() {
               ref={viewportRef}
               className="overflow-hidden"
               aria-live={autoplayOn ? "off" : "polite"}
+              onMouseEnter={() => setInteracting(true)}
+              onMouseLeave={() => setInteracting(false)}
+              onFocusCapture={() => setInteracting(true)}
+              onBlurCapture={() => setInteracting(false)}
             >
               <motion.div
                 className="flex w-full cursor-grab items-stretch active:cursor-grabbing"
@@ -352,43 +360,17 @@ export default function Testimonials() {
                     className="group relative h-11 w-6 focus-visible:outline-none"
                   >
                     <span
-                      className={`absolute left-0 top-1/2 h-1.5 -translate-y-1/2 overflow-hidden rounded-full transition-all duration-300 ease-out group-focus-visible:ring-2 group-focus-visible:ring-brand-500 group-focus-visible:ring-offset-2 group-focus-visible:ring-offset-slate-50 ${
+                      className={`absolute left-0 top-1/2 h-1.5 -translate-y-1/2 rounded-full transition-all duration-300 ease-out group-focus-visible:ring-2 group-focus-visible:ring-brand-500 group-focus-visible:ring-offset-2 group-focus-visible:ring-offset-slate-50 ${
                         i === index
-                          ? "w-8 bg-brand-100"
+                          ? "w-8 bg-brand-500"
                           : "w-4 bg-slate-300 group-hover:bg-slate-400"
                       }`}
-                    >
-                      {i === index && (
-                        <motion.span
-                          key={autoplayOn ? `run-${index}` : `idle-${index}`}
-                          className="block h-full w-full origin-left rounded-full bg-brand-500"
-                          initial={{ scaleX: autoplayOn ? 0 : 1 }}
-                          animate={{ scaleX: 1 }}
-                          transition={
-                            autoplayOn
-                              ? { duration: AUTOPLAY_MS / 1000, ease: "linear" }
-                              : { duration: 0 }
-                          }
-                        />
-                      )}
-                    </span>
+                    />
                   </button>
                 ))}
               </div>
 
               <div className="flex items-center gap-2">
-                {!reduce && maxIndex > 0 && (
-                  <ControlButton
-                    label={playing ? "Pausar rotação automática" : "Retomar rotação automática"}
-                    onClick={() => setPlaying((p) => !p)}
-                  >
-                    {playing ? (
-                      <IconPause aria-hidden="true" className="h-4 w-4" />
-                    ) : (
-                      <IconPlay aria-hidden="true" className="h-4 w-4" />
-                    )}
-                  </ControlButton>
-                )}
                 <ControlButton label="Depoimentos anteriores" onClick={() => slideTo(index - 1)}>
                   <IconChevronLeft aria-hidden="true" className="h-5 w-5" />
                 </ControlButton>
