@@ -51,10 +51,10 @@ export default function ProblemSection() {
         <Reveal direction="right" className="relative">
           <div className="relative overflow-hidden rounded-2xl shadow-soft ring-1 ring-slate-200">
             <Image
-              src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=1200&q=80"
+              src="/problem-section.jpg"
               alt="Empresário analisando processos do negócio no computador"
               width={1200}
-              height={900}
+              height={800}
               className="h-[420px] w-full object-cover"
               priority={false}
             />
