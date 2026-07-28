@@ -1,18 +1,20 @@
+import Link from "next/link";
 import { IconPhoneCall, IconMail, IconMapPin, IconWhatsApp } from "./icons";
 import { links } from "./nav-links";
+import {
+  EMAIL,
+  LOCATION_DISPLAY,
+  PHONE_DISPLAY,
+  WHATSAPP_HREF,
+} from "../site-config";
 
 const navLinks = links.filter((link) => link.label !== "Soluções");
 
 const contacts = [
-  { icon: IconPhoneCall, text: "(12) 99709-6351" },
-  { icon: IconMail, text: "contato@vexsoftware.com.br" },
-  { icon: IconMapPin, text: "Cachoeira Paulista - SP" },
+  { icon: IconPhoneCall, text: PHONE_DISPLAY },
+  { icon: IconMail, text: EMAIL },
+  { icon: IconMapPin, text: LOCATION_DISPLAY },
 ];
-
-const WHATSAPP_PHONE = "5512997096351";
-const WHATSAPP_MESSAGE =
-  "Olá! Vim pelo site da VEX Software e gostaria de solicitar um orçamento.";
-const WHATSAPP_HREF = `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
 
 export default function Footer() {
   return (
@@ -79,8 +81,12 @@ export default function Footer() {
         <div className="flex flex-col items-center justify-between gap-3 border-t border-white/10 py-6 text-xs text-slate-500 sm:flex-row">
           <p>© {new Date().getFullYear()} VEX Software. Todos os direitos reservados.</p>
           <p className="flex gap-4">
-            <a href="#" className="hover:text-slate-300">Política de privacidade</a>
-            <a href="#" className="hover:text-slate-300">Termos de uso</a>
+            <Link href="/politica-de-privacidade" className="hover:text-slate-300">
+              Política de privacidade
+            </Link>
+            <Link href="/termos-de-uso" className="hover:text-slate-300">
+              Termos de uso
+            </Link>
           </p>
         </div>
       </div>

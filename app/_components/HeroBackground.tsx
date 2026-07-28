@@ -1,11 +1,11 @@
 "use client";
 
-import { useMemo, useRef, useState, useEffect } from "react";
+import { useMemo, useRef } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import * as THREE from "three";
 
 /* ---- Glowing particle field with subtle mouse parallax ---- */
-function ParticleField({ count = 900 }: { count?: number }) {
+function ParticleField({ count = 400 }: { count?: number }) {
   const pointsRef = useRef<THREE.Points>(null);
   const { viewport } = useThree();
 
@@ -119,22 +119,17 @@ function Scene() {
   );
 }
 
+/**
+ * Quem decide *se* e *quando* montar este componente é o `Hero` — só assim o
+ * bundle do three.js deixa de ser baixado em telas pequenas e com movimento
+ * reduzido. Aqui assumimos que o ambiente já foi validado.
+ */
 export default function HeroBackground() {
-  const [enabled, setEnabled] = useState(false);
-
-  useEffect(() => {
-    // Respect reduced motion + skip on very small screens for perf
-    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (!reduce) setEnabled(true);
-  }, []);
-
-  if (!enabled) return null;
-
   return (
     <div className="pointer-events-none absolute inset-0 bg-radial-fade">
       <Canvas
         camera={{ position: [0, 0, 12], fov: 60 }}
-        dpr={[1, 1.6]}
+        dpr={[1, 1.5]}
         gl={{ antialias: true, alpha: true }}
         style={{ background: "transparent" }}
       >

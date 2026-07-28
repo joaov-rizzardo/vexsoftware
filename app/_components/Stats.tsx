@@ -51,7 +51,10 @@ export default function Stats() {
   );
 
   return (
-    <section className="relative -mt-px bg-slate-50 pb-10">
+    <section aria-labelledby="stats-heading" className="relative -mt-px bg-slate-50 pb-10">
+      <h2 id="stats-heading" className="sr-only">
+        Resultados da VEX Software em números
+      </h2>
       <div ref={root} className="container-page">
         <div className="relative overflow-hidden rounded-3xl bg-[radial-gradient(120%_140%_at_0%_0%,#12275a_0%,#0a1124_60%)] px-6 py-10 shadow-glow ring-1 ring-white/10 sm:px-10">
           <div className="bg-grid pointer-events-none absolute inset-0 opacity-40" />

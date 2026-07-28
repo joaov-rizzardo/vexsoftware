@@ -12,10 +12,12 @@ import Faq from "./_components/Faq";
 import ContactForm from "./_components/ContactForm";
 import Footer from "./_components/Footer";
 import WhatsAppFloat from "./_components/WhatsAppFloat";
+import JsonLd from "./_components/JsonLd";
 
 export default function Home() {
   return (
     <>
+      <JsonLd />
       <ScrollProgress />
       <Navbar />
       <main>

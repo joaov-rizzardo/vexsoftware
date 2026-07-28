@@ -3,11 +3,7 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { IconWhatsApp, IconClose } from "./icons";
-
-const PHONE = "5512997096351";
-const MESSAGE =
-  "Olá! Vim pelo site da VEX Software e gostaria de solicitar um orçamento.";
-const HREF = `https://wa.me/${PHONE}?text=${encodeURIComponent(MESSAGE)}`;
+import { WHATSAPP_HREF } from "../site-config";
 
 export default function WhatsAppFloat() {
   const reduce = useReducedMotion();
@@ -105,7 +101,7 @@ export default function WhatsAppFloat() {
               ))}
 
             <motion.a
-              href={HREF}
+              href={WHATSAPP_HREF}
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Conversar no WhatsApp"

@@ -1,15 +1,49 @@
 "use client";
 
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import dynamic from "next/dynamic";
 import DeviceMockup from "./DeviceMockup";
 import { IconArrowRight, IconCheckCircle } from "./icons";
 
+// `dynamic` só dispara o import quando o componente é realmente renderizado,
+// então o gate abaixo é o que impede o download do three.js.
 const HeroBackground = dynamic(() => import("./HeroBackground"), { ssr: false });
 
 gsap.registerPlugin(useGSAP);
+
+/**
+ * O campo de partículas é enfeite: custa centenas de KB de JS e um rAF
+ * contínuo. Só vale a pena onde ele aparece bem e sem competir com o LCP —
+ * telas grandes, sem preferência por movimento reduzido, e depois do primeiro
+ * paint.
+ */
+function useHeroBackground() {
+  const [enabled, setEnabled] = useState(false);
+
+  useEffect(() => {
+    if (!window.matchMedia("(min-width: 1024px)").matches) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    let cancelled = false;
+    const start = () => {
+      if (!cancelled) setEnabled(true);
+    };
+
+    if (typeof window.requestIdleCallback === "function") {
+      window.requestIdleCallback(start, { timeout: 2000 });
+    } else {
+      window.setTimeout(start, 600);
+    }
+
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  return enabled;
+}
 
 const bullets = [
   "Soluções sob medida",
@@ -20,6 +54,7 @@ const bullets = [
 
 export default function Hero() {
   const root = useRef<HTMLElement>(null);
+  const showBackground = useHeroBackground();
 
   useGSAP(
     () => {
@@ -40,7 +75,7 @@ export default function Hero() {
   );
 
   return (
-    <header
+    <section
       id="inicio"
       ref={root}
       className="relative flex min-h-screen flex-col overflow-hidden text-white"
@@ -49,7 +84,7 @@ export default function Hero() {
       <div className="absolute inset-0 bg-[radial-gradient(120%_120%_at_20%_0%,#12275a_0%,#0a1124_45%,#060b1a_100%)]" />
       {/* Grid + glows */}
       <div className="bg-grid pointer-events-none absolute inset-0 bg-radial-fade" />
-      <HeroBackground />
+      {showBackground && <HeroBackground />}
       <div className="pointer-events-none absolute -right-40 -top-40 h-[600px] w-[600px] rounded-full bg-brand-600/20 blur-[130px]" />
       <div className="pointer-events-none absolute -left-40 top-1/3 h-[500px] w-[500px] rounded-full bg-navy-600/40 blur-[130px]" />
 
@@ -104,6 +139,6 @@ export default function Hero() {
           </div>
         </div>
       </div>
-    </header>
+    </section>
   );
 }
