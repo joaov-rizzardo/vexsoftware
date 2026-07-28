@@ -8,8 +8,8 @@ type Tech = { name: string; logo: string };
 
 type Category = {
   icon: ComponentType<SVGProps<SVGSVGElement>>;
-  /* Gradiente do quadrado do ícone: azul da marca no primeiro card e tons de
-     apoio nos demais, só para diferenciar as áreas. */
+  /* Gradiente do quadrado do ícone: tons de brand (azul), navy e accent (verde)
+     para diferenciar as áreas sem sair da paleta do site. */
   gradient: string;
   title: string;
   desc: string;
@@ -19,7 +19,7 @@ type Category = {
 const categories: Category[] = [
   {
     icon: IconGlobe,
-    gradient: "from-brand-500 to-brand-600",
+    gradient: "from-brand-400 to-brand-600",
     title: "Desenvolvimento Web",
     desc: "Aplicações rápidas, responsivas e modernas para web.",
     techs: [
@@ -31,7 +31,7 @@ const categories: Category[] = [
   },
   {
     icon: IconPhone,
-    gradient: "from-violet-500 to-purple-600",
+    gradient: "from-brand-600 to-navy-600",
     title: "Sistemas e Aplicativos",
     desc: "Sistemas robustos e escaláveis para diferentes necessidades.",
     techs: [
@@ -43,7 +43,7 @@ const categories: Category[] = [
   },
   {
     icon: IconDatabase,
-    gradient: "from-teal-500 to-emerald-600",
+    gradient: "from-accent-400 to-accent-500",
     title: "Dados e Armazenamento",
     desc: "Bancos de dados seguros, rápidos e preparados para crescer.",
     techs: [
@@ -55,7 +55,7 @@ const categories: Category[] = [
   },
   {
     icon: IconCloud,
-    gradient: "from-rose-500 to-pink-600",
+    gradient: "from-cyan-400 to-teal-500",
     title: "Nuvem e Infraestrutura",
     desc: "Publicação em nuvem, ambientes isolados e versionamento do código.",
     techs: [
