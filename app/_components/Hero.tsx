@@ -14,16 +14,15 @@ const HeroBackground = dynamic(() => import("./HeroBackground"), { ssr: false })
 gsap.registerPlugin(useGSAP);
 
 /**
- * O campo de partículas é enfeite: custa centenas de KB de JS e um rAF
- * contínuo. Só vale a pena onde ele aparece bem e sem competir com o LCP —
- * telas grandes, sem preferência por movimento reduzido, e depois do primeiro
- * paint.
+ * O campo de partículas é enfeite e custa caro: centenas de KB de JS mais um
+ * rAF contínuo. Roda em todas as larguras, mas sempre depois do primeiro paint
+ * — assim o three.js não disputa banda e CPU com o LCP — e nunca quando o
+ * visitante pede movimento reduzido.
  */
 function useHeroBackground() {
   const [enabled, setEnabled] = useState(false);
 
   useEffect(() => {
-    if (!window.matchMedia("(min-width: 1024px)").matches) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
     let cancelled = false;

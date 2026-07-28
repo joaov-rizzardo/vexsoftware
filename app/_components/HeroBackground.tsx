@@ -102,7 +102,7 @@ function FloatingSolid({
   );
 }
 
-function Scene() {
+function Scene({ particles }: { particles: number }) {
   // Position the solids as fractions of the current viewport so they stay
   // on screen on narrow/tall aspect ratios instead of falling outside the frustum.
   const { viewport } = useThree();
@@ -111,7 +111,7 @@ function Scene() {
 
   return (
     <>
-      <ParticleField />
+      <ParticleField count={particles} />
       <FloatingSolid position={[-hw * 0.85, hh * 0.5, -2]} scale={1.5} speed={0.25} geometry="ico" />
       <FloatingSolid position={[hw * 0.9, -hh * 0.45, -1]} scale={1.1} speed={0.3} geometry="octa" />
       <FloatingSolid position={[hw * 0.65, hh * 0.6, -3]} scale={0.9} speed={0.2} geometry="torus" />
@@ -120,20 +120,27 @@ function Scene() {
 }
 
 /**
- * Quem decide *se* e *quando* montar este componente é o `Hero` — só assim o
- * bundle do three.js deixa de ser baixado em telas pequenas e com movimento
- * reduzido. Aqui assumimos que o ambiente já foi validado.
+ * Quem decide *se* e *quando* montar este componente é o `Hero`: só é
+ * importado depois do primeiro paint e nunca com movimento reduzido. Aqui
+ * apenas dimensionamos a cena ao aparelho.
+ *
+ * Como o componente só roda no cliente (`ssr: false`), ler `window` na
+ * renderização é seguro — não há HTML de servidor para divergir.
  */
 export default function HeroBackground() {
+  const narrow = window.innerWidth < 1024;
+
   return (
     <div className="pointer-events-none absolute inset-0 bg-radial-fade">
       <Canvas
         camera={{ position: [0, 0, 12], fov: 60 }}
-        dpr={[1, 1.5]}
-        gl={{ antialias: true, alpha: true }}
+        // Celular costuma reportar DPR 3: sem teto, seriam ~9x os pixels de
+        // um DPR 1 para desenhar a cada frame.
+        dpr={narrow ? [1, 1.25] : [1, 1.5]}
+        gl={{ antialias: !narrow, alpha: true }}
         style={{ background: "transparent" }}
       >
-        <Scene />
+        <Scene particles={narrow ? 220 : 400} />
       </Canvas>
     </div>
   );
