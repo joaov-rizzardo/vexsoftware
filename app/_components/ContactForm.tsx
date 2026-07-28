@@ -225,6 +225,16 @@ export default function ContactForm() {
                 action={formAction}
                 className="rounded-2xl border border-white/20 bg-white/10 p-6 backdrop-blur-sm sm:p-8"
               >
+                {/* Honeypot: invisível para pessoas, atrativo para bots. */}
+                <input
+                  type="checkbox"
+                  name="botcheck"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  aria-hidden="true"
+                  className="hidden"
+                />
+
                 <div className="grid gap-5 sm:grid-cols-2">
                   <Field
                     id="nome"
