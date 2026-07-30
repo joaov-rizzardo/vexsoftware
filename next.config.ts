@@ -3,8 +3,10 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   allowedDevOrigins: ['192.168.1.17'],
   images: {
-    // AVIF primeiro: ~30% menor que WebP na imagem de LCP do hero.
-    formats: ['image/avif', 'image/webp'],
+    // A Image Optimization API do Next não roda de forma confiável no runtime
+    // da Cloudflare (limite de CPU time), então servimos os arquivos de
+    // /public já otimizados manualmente, sem transformação em tempo de request.
+    unoptimized: true,
   },
 };
 

@@ -31,7 +31,7 @@ export default function DeviceMockup() {
         {/* VEX dashboard on laptop + phone */}
         <div ref={mockupRef} className="relative z-10">
           <Image
-            src="/dashboard-mockup.png"
+            src="/dashboard-mockup.webp"
             alt="Painel VEX exibindo dashboard, faturamento e indicadores em um notebook e celular"
             width={1461}
             height={979}
