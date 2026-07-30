@@ -25,57 +25,53 @@ type Testimonial = {
   rating: number;
 };
 
-/**
- * PLACEHOLDER — substituir por depoimentos reais (com autorização do cliente)
- * antes de publicar.
- */
 const testimonials: Testimonial[] = [
   {
     quote:
-      "Antes a gente controlava tudo no caderno e no WhatsApp. Hoje o sistema mostra estoque, vendas e agenda em tempo real. Em três meses paramos de perder pedido.",
-    name: "Marina Alves",
-    role: "Sócia-proprietária",
-    company: "Bella Estética",
-    rating: 5,
-  },
-  {
-    quote:
-      "O agendamento online foi o divisor de águas. Os clientes marcam sozinhos, de madrugada, e minha equipe parou de perder tempo no telefone.",
-    name: "Rafael Menezes",
-    role: "Diretor",
-    company: "Auto Center Menezes",
-    rating: 5,
-  },
-  {
-    quote:
-      "A automação do WhatsApp responde os clientes na hora. Triplicamos os orçamentos enviados sem contratar ninguém novo.",
-    name: "Diego Fontana",
-    role: "Fundador",
-    company: "Fontana Reformas",
-    rating: 5,
-  },
-  {
-    quote:
-      "O suporte é o que mais me impressiona: mandei mensagem num sábado e resolveram no mesmo dia. Parece que fazem parte da empresa.",
-    name: "Camila Ribeiro",
-    role: "Coordenadora administrativa",
-    company: "Clínica VidaMais",
-    rating: 5,
-  },
-  {
-    quote:
-      "Eles entenderam a rotina da loja antes de escrever uma linha de código. O sistema saiu com a nossa cara, não um pacote genérico.",
-    name: "Bruno Tavares",
-    role: "Gerente de operações",
-    company: "Distribuidora Norte",
-    rating: 5,
-  },
-  {
-    quote:
-      "O site novo trouxe orçamento qualificado já na primeira semana. Hoje chega gente que já sabe o que a gente faz e quanto custa.",
-    name: "Patrícia Lemos",
+      "A Vex fez nosso site e ficou como nós queriamos. Agora nossos clientes conseguem conhecer mais nosso trabalho e entrar em contato com muito mais facilidade. Já sentimos uma diferença grande na procura desde que o site ficou pronto.",
+    name: "Camila",
     role: "Proprietária",
-    company: "Lemos Arquitetura",
+    company: "Estúdio de arquitetura",
+    rating: 5,
+  },
+  {
+    quote:
+      "O atendimento pelo WhatsApp ficou muito mais organizado depois que a Vex automatizou algumas etapas. Nossos clientes conseguem tirar dúvidas e receber informações mesmo quando não estamos disponíveis, e isso facilitou muito nossa rotina.",
+    name: "André",
+    role: "Proprietário",
+    company: "Clínica odontológica",
+    rating: 5,
+  },
+  {
+    quote:
+      "O cardápio digital facilitou muito nosso atendimento. O cliente consegue ver tudo e fazer o pedido direto por ele, sem precisar ficar esperando a gente responder. Para nós também ficou bem mais fácil organizar os pedidos, principalmente nos horários de maior movimento.",
+    name: "Juliana",
+    role: "Proprietária",
+    company: "Hamburgueria",
+    rating: 5,
+  },
+  {
+    quote:
+      "Desde a primeira conversa, senti que eles realmente estavam preocupados em entender o que eu precisava. Pude explicar minhas ideias, mesmo sem saber exatamente como colocar tudo em prática, e a equipe teve muita paciência para transformar isso em algo que realmente funcionasse para o meu negócio.",
+    name: "Marcos",
+    role: "Proprietário",
+    company: "Loja de materiais elétricos",
+    rating: 5,
+  },
+  {
+    quote:
+      "Uma coisa que gostei muito foi que o suporte não acabou depois que o projeto foi entregue. Quando tivemos dúvidas ou precisamos de ajuda com alguma coisa, a equipe da Vex continuou dando todo o suporte. Isso fez muita diferença, principalmente no começo.",
+    name: "Renata",
+    role: "Proprietária",
+    company: "Salão de beleza",
+    rating: 5,
+  },
+  {
+    quote:
+      "No início, minha equipe ficou meio receosa com a mudança, porque era algo novo para todo mundo. Mas a Vex acompanhou a gente nesse processo, explicou tudo com calma e treinou o pessoal para usar o sistema. Hoje todo mundo já está bem mais acostumado e nossa rotina ficou muito mais simples.",
+    name: "Felipe",
+    role: "Proprietário",
+    company: "Distribuidora de bebidas",
     rating: 5,
   },
 ];
