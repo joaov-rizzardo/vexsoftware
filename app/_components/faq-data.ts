@@ -6,27 +6,27 @@
  */
 export const faqs = [
   {
-    q: "Quanto custa um sistema?",
-    a: "O valor varia de acordo com a necessidade do seu negócio. Criamos soluções sob medida para cada cliente.",
+    q: "Quanto tempo leva para desenvolver um sistema?",
+    a: "O prazo depende da complexidade do projeto. Sites costumam levar 2 a 3 semanas, MVPs e apps 2 a 4 meses, e sistemas robustos 4 a 8 meses. Após entendermos o projeto, definimos um cronograma realista.",
   },
   {
-    q: "O sistema é meu?",
-    a: "Sim. Todo o sistema desenvolvido é 100% seu, sem mensalidades escondidas de licença.",
+    q: "Quanto custa um sistema e como funciona o orçamento?",
+    a: "O valor varia de acordo com as necessidades do seu negócio, pois desenvolvemos soluções sob medida. Nosso processo é simples e sem compromisso: você descreve sua ideia pelo formulário ou WhatsApp e agendamos uma reunião de descoberta gratuita (~45 min) para entender seus requisitos. Em até 24 horas, você recebe uma proposta detalhada com escopo, prazo e investimento.",
   },
   {
-    q: "Quanto tempo demora para ficar pronto?",
-    a: "O prazo depende da complexidade do projeto. Após o entendimento, passamos um cronograma realista.",
+    q: "Preciso já ter tudo definido para começar um projeto?",
+    a: "Não. Muitos clientes chegam só com uma ideia. É justamente na etapa de descoberta que ajudamos a transformar essa ideia em um escopo claro e viável.",
   },
   {
-    q: "Posso pedir alterações?",
-    a: "Claro! Ajustes e melhorias fazem parte do nosso compromisso com o seu sucesso.",
+    q: "O código e o sistema são meus depois da entrega?",
+    a: "Sim. Todo o código-fonte e a propriedade intelectual do projeto são transferidos para você após a entrega. Você não fica refém de nenhuma dependência conosco para manter ou evoluir o sistema.",
   },
   {
-    q: "Vocês oferecem suporte?",
-    a: "Sim! Oferecemos suporte personalizado e rápido por 2 meses após a entrega final do sistema, para garantir que tudo funcione da melhor forma.",
+    q: "Vocês oferecem suporte após a entrega?",
+    a: "Sim. Após a entrega, você tem 30 dias de suporte gratuito para correções e pequenos ajustes. Caso surjam demandas maiores, como novas funcionalidades, elas são orçadas separadamente.",
   },
   {
-    q: "Meus dados ficam seguros?",
-    a: "Sim. Utilizamos as melhores práticas de segurança para proteger suas informações.",
+    q: "Vocês realizam manutenção e atualizações após a entrega?",
+    a: "Sim. Após os 30 dias de suporte, continuamos disponíveis para manutenções, atualizações e novas funcionalidades, mediante orçamento separado, de acordo com a necessidade do projeto.",
   },
 ];
