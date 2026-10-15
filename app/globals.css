@@ -231,3 +231,117 @@ body {
     animation: none !important;
   }
 }
+
+
+
+
+
+
+
+/* ============================================================
+   Hero visual (HeroVisual.tsx) — foto dissolvida no fundo
+   Desktop: a área da foto começa exatamente onde terminam as
+   frases do hero e o degradê vai da esquerda (transparente) para a
+   direita (foto inteira), mostrando a panorâmica quase completa.
+   Mobile: degradê vertical.
+   ============================================================ */
+
+/* Fim das frases do hero: início do `container-page` (máx. 96rem,
+   padding 3rem → 4rem em ≥96rem) + a largura da linha mais longa do
+   título ("economizar tempo e", Poppins 3rem ≈ 30.5rem). Se o título ou
+   o container mudarem, atualize aqui também. */
+.hv-area {
+  --hv-page: min(100vw, 96rem);
+  --hv-pad: 3rem;
+  --hv-text: 30.5rem;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: calc((100vw - var(--hv-page)) / 2 + var(--hv-pad) + var(--hv-text));
+  pointer-events: none;
+}
+@media (width >= 96rem) {
+  .hv-area { --hv-pad: 4rem; }
+}
+
+.hv-photo {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  --hv-mask-main: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(0, 0, 0, 0.4) 16%,
+    #000 34%,
+    #000 74%,
+    rgba(0, 0, 0, 0.45) 88%,
+    transparent 100%
+  );
+  --hv-mask-cross: linear-gradient(to right, transparent 0%, #000 10%, #000 90%, transparent 100%);
+  -webkit-mask-image: var(--hv-mask-main), var(--hv-mask-cross);
+  mask-image: var(--hv-mask-main), var(--hv-mask-cross);
+  -webkit-mask-composite: source-in;
+  mask-composite: intersect;
+}
+@media (width >= 64rem) {
+  /* Caixa no formato exato da foto (sem corte em cima/embaixo),
+     colada na borda direita do site e mais alta que o bloco de texto,
+     então a foto fica grande. Ela se estende para a esquerda por baixo
+     das frases, mas a máscara a deixa transparente até o fim do texto
+     (--hv-aw = largura da .hv-area, medida a partir da direita). */
+  .hv-photo {
+    --hv-aw: calc(100vw - (100vw - var(--hv-page)) / 2 - var(--hv-pad) - var(--hv-text));
+    inset: auto;
+    top: -6rem;
+    bottom: -2rem;
+    right: 0;
+    left: auto;
+    height: calc(100% + 8rem);
+    width: auto;
+    aspect-ratio: 1907 / 825;
+    /* Direita → esquerda: foto inteira à direita, some antes das frases */
+    --hv-mask-main: linear-gradient(
+      to left,
+      #000 0,
+      #000 calc(var(--hv-aw) * 0.5),
+      rgba(0, 0, 0, 0.75) calc(var(--hv-aw) * 0.66),
+      rgba(0, 0, 0, 0.4) calc(var(--hv-aw) * 0.8),
+      rgba(0, 0, 0, 0.12) calc(var(--hv-aw) * 0.92),
+      transparent var(--hv-aw)
+    );
+    --hv-mask-cross: linear-gradient(
+      to bottom,
+      /* Topo: curva suave (ease) no mesmo trecho de 14%, sem degrau */
+      transparent 0%,
+      rgba(0, 0, 0, 0.04) 1.5%,
+      rgba(0, 0, 0, 0.13) 3.5%,
+      rgba(0, 0, 0, 0.28) 5.5%,
+      rgba(0, 0, 0, 0.47) 7.5%,
+      rgba(0, 0, 0, 0.66) 9.5%,
+      rgba(0, 0, 0, 0.82) 11.5%,
+      rgba(0, 0, 0, 0.94) 13%,
+      #000 14%,
+      #000 82%,
+      rgba(0, 0, 0, 0.5) 92%,
+      transparent 100%
+    );
+  }
+}
+.hv-photo-img {
+  object-fit: cover;
+  /* A caixa tem o formato da foto: ela aparece inteira */
+  object-position: center;
+  filter: saturate(0.95) brightness(0.9);
+  /* Zoom sutil ancorado no topo: o topo da foto nunca é cortado */
+  transform-origin: 70% 0%;
+  animation: hv-kenburns 28s ease-in-out infinite alternate;
+}
+@keyframes hv-kenburns {
+  from { transform: scale(1.04); }
+  to { transform: scale(1); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hv-photo-img { animation: none; }
+}

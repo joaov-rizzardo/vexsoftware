@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import dynamic from "next/dynamic";
-import DeviceMockup from "./DeviceMockup";
+import HeroVisual from "./HeroVisual";
 import { IconArrowRight, IconCheckCircle } from "./icons";
 
 // `dynamic` só dispara o import quando o componente é realmente renderizado,
@@ -90,39 +90,48 @@ export default function Hero() {
       {/* Main content — the whole block (copy + devices + bullets) is
           vertically centered together so nothing drifts to the bottom edge */}
       <div className="relative z-10 flex flex-1 flex-col justify-center pt-20 pb-8 lg:pt-16">
-        <div className="container-page grid items-center gap-10 lg:grid-cols-[1fr_1.15fr] lg:gap-10">
-          {/* Copy */}
-          <div>
-            <h1 className="mt-5 font-display text-[2rem] font-bold leading-[1.1] tracking-tight sm:text-[2.5rem] lg:text-[3rem]">
-              <span className="hero-line block">Tecnologia que faz</span>
-              <span className="hero-line block">
-                sua empresa <span className="text-brand-400">vender mais</span>,
-              </span>
-              <span className="hero-line block">
-                economizar tempo e <span className="text-accent-400">crescer</span>.
-              </span>
-            </h1>
-
-            <p className="hero-sub mt-5 max-w-md text-base leading-relaxed text-slate-300">
-              Criamos sites, sistemas e automações para pequenas e médias empresas que
-              querem profissionalizar seu negócio sem complicação.
-            </p>
-
-            {/* Animated as one element so both buttons always appear together */}
-            <div className="hero-cta mt-7 flex flex-wrap gap-3">
-              <a
-                href="#fale-conosco"
-                className="group flex cursor-pointer items-center gap-2 rounded-xl bg-brand-600 px-5 py-3 text-sm font-medium text-white shadow-lg shadow-blue-900/40 transition-all hover:-translate-y-0.5 hover:bg-brand-500 hover:shadow-blue-500/50"
-              >
-                Solicitar orçamento
-                <IconArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </a>
-            </div>
+        <div className="relative">
+          {/* Desktop: a foto começa onde terminam as frases, a máscara a
+              revela da esquerda para a direita e ela fica centrada no bloco de
+              texto, acima da linha de benefícios (ver .hv-area em globals.css) */}
+          <div className="hv-area hidden lg:block">
+            <HeroVisual />
           </div>
 
-          {/* Devices — hidden on small screens where there's no room beside the copy */}
-          <div className="relative hidden lg:block">
-            <DeviceMockup />
+          <div className="container-page grid items-center gap-10 lg:grid-cols-[1fr_1.15fr] lg:gap-10">
+            {/* Copy */}
+            <div>
+              <h1 className="mt-5 font-display text-[2rem] font-bold leading-[1.1] tracking-tight sm:text-[2.5rem] lg:text-[3rem]">
+                <span className="hero-line block">Tecnologia que faz</span>
+                <span className="hero-line block">
+                  sua empresa <span className="text-brand-400">vender mais</span>,
+                </span>
+                <span className="hero-line block">
+                  economizar tempo e <span className="text-accent-400">crescer</span>.
+                </span>
+              </h1>
+
+              <p className="hero-sub mt-5 max-w-md text-base leading-relaxed text-slate-300">
+                Criamos sites, sistemas e automações para pequenas e médias empresas que
+                querem profissionalizar seu negócio sem complicação.
+              </p>
+
+              {/* Animated as one element so both buttons always appear together */}
+              <div className="hero-cta mt-7 flex flex-wrap gap-3">
+                <a
+                  href="#fale-conosco"
+                  className="group flex cursor-pointer items-center gap-2 rounded-xl bg-brand-600 px-5 py-3 text-sm font-medium text-white shadow-lg shadow-blue-900/40 transition-all hover:-translate-y-0.5 hover:bg-brand-500 hover:shadow-blue-500/50"
+                >
+                  Solicitar orçamento
+                  <IconArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </a>
+              </div>
+            </div>
+
+            {/* Mobile: a foto entra abaixo do texto, dissolvendo na vertical */}
+            <div className="relative -mx-5 -mt-4 aspect-[16/10] sm:-mx-8 lg:hidden">
+              <HeroVisual />
+            </div>
           </div>
         </div>
 
