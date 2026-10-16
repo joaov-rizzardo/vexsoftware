@@ -127,11 +127,6 @@ export default function Hero() {
                 </a>
               </div>
             </div>
-
-            {/* Mobile: a foto entra abaixo do texto, dissolvendo na vertical */}
-            <div className="relative -mx-5 -mt-4 aspect-[16/10] sm:-mx-8 lg:hidden">
-              <HeroVisual />
-            </div>
           </div>
         </div>
 
