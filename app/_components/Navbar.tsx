@@ -4,17 +4,7 @@ import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { IconMenu, IconClose, IconArrowRight } from "./icons";
 import { links } from "./nav-links";
-
-function Logo() {
-  return (
-    <a href="#inicio" className="flex flex-col leading-none" aria-label="VEX Software">
-      <span className="font-display text-2xl font-bold tracking-[0.35em] text-white">
-        VEX
-      </span>
-      <span className="text-[0.55rem] tracking-[0.5em] text-slate-400">SOFTWARE</span>
-    </a>
-  );
-}
+import VexLogo from "./VexLogo";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -65,7 +55,7 @@ export default function Navbar() {
       }`}
     >
       <nav className="container-page flex items-center justify-between py-4">
-        <Logo />
+        <VexLogo href="#inicio" corSoftware="text-slate-400" />
 
         <ul className="hidden items-center gap-6 text-sm text-slate-300 lg:flex xl:gap-8">
           {links.map((link, i) => (

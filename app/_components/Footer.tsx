@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { IconPhoneCall, IconMail, IconMapPin, IconWhatsApp } from "./icons";
 import { links } from "./nav-links";
+import VexLogo from "./VexLogo";
 import {
   EMAIL,
   LOCATION_DISPLAY,
@@ -24,14 +25,7 @@ export default function Footer() {
         <div className="grid gap-12 pb-12 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1.2fr]">
           {/* Brand */}
           <div>
-            <div className="flex flex-col leading-none">
-              <span className="font-display text-2xl font-bold tracking-[0.35em] text-white">
-                VEX
-              </span>
-              <span className="text-[0.55rem] tracking-[0.5em] text-slate-500">
-                SOFTWARE
-              </span>
-            </div>
+            <VexLogo corSoftware="text-slate-500" />
             <p className="mt-5 max-w-xs text-sm leading-relaxed">
               Traduzimos a necessidade do seu negócio em soluções tecnológicas viáveis
               que geram resultados de verdade.
