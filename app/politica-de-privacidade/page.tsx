@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 export default function PoliticaDePrivacidade() {
   return (
-    <LegalPage title="Política de privacidade" updatedAt="27 de julho de 2026">
+    <LegalPage title="Política de privacidade" updatedAt="25 de novembro de 2026">
       <p>
         Esta política descreve como a {SITE_NAME} trata os dados pessoais
         recebidos por meio deste site, em conformidade com a Lei Geral de
@@ -30,8 +30,33 @@ export default function PoliticaDePrivacidade() {
           <li>A mensagem que você escreve no campo de assunto</li>
         </ul>
         <p>
-          Não utilizamos cookies de rastreamento, não criamos perfis de
-          navegação e não coletamos dados sensíveis.
+          Não coletamos dados sensíveis e não vendemos nem cruzamos dados de
+          navegação para fins publicitários.
+        </p>
+      </section>
+
+      <section>
+        <h2>Cookies e estatísticas de uso</h2>
+        <p>
+          Usamos o Google Analytics para entender, de forma agregada, como o
+          site é usado: páginas visitadas, origem do acesso, tipo de
+          dispositivo e cliques em botões como WhatsApp e envio do formulário.
+          Para isso, o Google Analytics grava cookies no seu navegador e
+          processa dados técnicos, como endereço IP e identificadores do
+          navegador, nos servidores do Google.
+        </p>
+        <p>
+          Não enviamos ao Google Analytics o seu nome, e-mail, telefone nem o
+          conteúdo das mensagens. Você pode bloquear ou apagar os cookies nas
+          configurações do navegador ou instalar o{" "}
+          <a
+            href="https://tools.google.com/dlpage/gaoptout"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            complemento de desativação do Google Analytics
+          </a>
+          .
         </p>
       </section>
 
@@ -51,7 +76,8 @@ export default function PoliticaDePrivacidade() {
           processado pelo serviço Web3Forms, que encaminha a mensagem para o
           nosso e-mail; nesse processo, os dados informados trafegam pela
           infraestrutura desse fornecedor. Fora isso, o acesso é restrito à
-          equipe da {SITE_NAME}.
+          equipe da {SITE_NAME}. As estatísticas de uso do site são
+          processadas pelo Google, conforme descrito na seção sobre cookies.
         </p>
       </section>
 

@@ -62,6 +62,7 @@ export default function Footer() {
             </ul>
             <a
               href={WHATSAPP_HREF}
+              data-track-location="footer"
               target="_blank"
               rel="noopener noreferrer"
               className="mt-5 inline-flex items-center gap-2 rounded-lg bg-gradient-to-br from-accent-400 to-accent-500 px-5 py-2.5 text-sm font-medium text-white shadow-lg shadow-green-900/30 transition-all hover:-translate-y-0.5 hover:shadow-green-500/40"

@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Poppins, Inter } from "next/font/google";
 import "./globals.css";
+import Analytics from "./_components/Analytics";
 import {
   SITE_DESCRIPTION,
   SITE_DESCRIPTION_SHORT,
@@ -82,6 +83,7 @@ export default function RootLayout({
       <body className="min-h-screen bg-white text-[color:var(--foreground)]">
         {children}
       </body>
+      <Analytics />
     </html>
   );
 }

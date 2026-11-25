@@ -132,7 +132,7 @@ export default function LinksPage() {
           </ul>
         </header>
 
-        <nav className={s.links} aria-label="Links da VEX Software">
+        <nav className={s.links} aria-label="Links da VEX Software" data-track-location="links_page">
           <a
             className={`${s.link} ${s.primary} ${s.reveal}`}
             style={{ animationDelay: ".25s" }}
@@ -152,7 +152,7 @@ export default function LinksPage() {
             <Arrow />
           </a>
 
-          <Link className={`${s.link} ${s.reveal}`} style={{ animationDelay: ".3s" }} href="/">
+          <Link className={`${s.link} ${s.reveal}`} style={{ animationDelay: ".3s" }} href="/" data-track="links_site_click">
             <span className={s.ico}>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                 <circle cx="12" cy="12" r="9" />
@@ -166,7 +166,7 @@ export default function LinksPage() {
             <Arrow />
           </Link>
 
-          <Link className={`${s.link} ${s.green} ${s.reveal}`} style={{ animationDelay: ".35s" }} href="/#fale-conosco">
+          <Link className={`${s.link} ${s.green} ${s.reveal}`} style={{ animationDelay: ".35s" }} href="/#fale-conosco" data-track="cta_click">
             <span className={s.ico}>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                 <path d="M9 11l3 3 8-8" />
@@ -181,7 +181,7 @@ export default function LinksPage() {
           </Link>
         </nav>
 
-        <footer className={`${s.footer} ${s.reveal}`} style={{ animationDelay: ".4s" }}>
+        <footer data-track-location="links_page_footer" className={`${s.footer} ${s.reveal}`} style={{ animationDelay: ".4s" }}>
           <div>
             <a href={`tel:${PHONE_E164}`}>{PHONE_DISPLAY}</a>
             <span className={s.dot}>•</span>

@@ -102,6 +102,7 @@ export default function WhatsAppFloat() {
 
             <motion.a
               href={WHATSAPP_HREF}
+              data-track-location="whatsapp_float"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Conversar no WhatsApp"

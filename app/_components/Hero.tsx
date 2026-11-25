@@ -120,6 +120,8 @@ export default function Hero() {
               <div className="hero-cta mt-7 flex flex-wrap gap-3">
                 <a
                   href="#fale-conosco"
+                  data-track="cta_click"
+                  data-track-location="hero"
                   className="group flex cursor-pointer items-center gap-2 rounded-xl bg-brand-600 px-5 py-3 text-sm font-medium text-white shadow-lg shadow-blue-900/40 transition-all hover:-translate-y-0.5 hover:bg-brand-500 hover:shadow-blue-500/50"
                 >
                   Solicitar orçamento

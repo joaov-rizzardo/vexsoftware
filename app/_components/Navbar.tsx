@@ -54,7 +54,7 @@ export default function Navbar() {
           : "bg-transparent"
       }`}
     >
-      <nav className="container-page flex items-center justify-between py-4">
+      <nav data-track-location="navbar" className="container-page flex items-center justify-between py-4">
         <VexLogo href="#inicio" corSoftware="text-slate-400" />
 
         <ul className="hidden items-center gap-6 text-sm text-slate-300 lg:flex xl:gap-8">
@@ -75,6 +75,7 @@ export default function Navbar() {
 
         <a
           href="#fale-conosco"
+          data-track="cta_click"
           className="group hidden cursor-pointer items-center gap-2 rounded-lg bg-brand-600 px-5 py-2.5 text-sm font-medium text-white shadow-lg shadow-blue-900/40 transition-all hover:-translate-y-0.5 hover:bg-brand-500 hover:shadow-blue-500/40 lg:inline-flex"
         >
           Solicitar orçamento
@@ -119,6 +120,8 @@ export default function Navbar() {
               <li className="mt-2">
                 <a
                   href="#fale-conosco"
+                  data-track="cta_click"
+                  data-track-location="navbar_mobile"
                   onClick={closeForNavigation("#fale-conosco")}
                   className="flex items-center justify-center gap-2 rounded-lg bg-brand-600 px-5 py-3 font-medium text-white"
                 >

@@ -41,6 +41,8 @@ export default function LogoCloud() {
         <Reveal delay={0.15} className="mt-12 flex justify-center">
           <a
             href="#fale-conosco"
+            data-track="cta_click"
+            data-track-location="logo_cloud"
             className="group inline-flex cursor-pointer items-center gap-2 rounded-xl border border-slate-200 bg-white px-6 py-3 text-sm font-medium text-navy-800 shadow-soft transition-all hover:-translate-y-0.5 hover:border-brand-300 hover:text-brand-600"
           >
             Ver mais projetos

@@ -1,6 +1,7 @@
 "use client";
 
 import { useActionState, useEffect, useRef } from "react";
+import { trackEvent } from "./track";
 import type {
   ChangeEvent,
   ComponentType,
@@ -155,6 +156,7 @@ export default function ContactForm() {
 
   useEffect(() => {
     if (state.status === "success") {
+      trackEvent("generate_lead", { form: "contato", page_path: window.location.pathname });
       formRef.current?.reset();
       if (assuntoCounterRef.current) {
         assuntoCounterRef.current.textContent = `0/${ASSUNTO_MAX_LENGTH}`;
@@ -185,7 +187,7 @@ export default function ContactForm() {
   const errors = state.status === "error" ? (state.errors ?? {}) : {};
 
   return (
-    <section id="fale-conosco" className="relative bg-navy-900 py-24 text-white">
+    <section id="fale-conosco" data-track-location="contact_section" className="relative bg-navy-900 py-24 text-white">
       <div className="container-narrow">
         <Reveal>
           <div className="relative overflow-hidden rounded-3xl bg-[linear-gradient(120deg,#2563eb,#1e40af)] px-6 py-10 shadow-glow sm:px-10 sm:py-14 lg:p-14">
