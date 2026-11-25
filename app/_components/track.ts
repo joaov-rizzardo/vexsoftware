@@ -1,10 +1,21 @@
 import { sendGAEvent } from "@next/third-parties/google";
 
 /**
- * ID de medição do GA4 (G-XXXXXXX). Sem ele, nada de analytics é carregado
- * e `trackEvent` vira no-op — útil em dev e em previews.
+ * ID de medição do GA4 (G-XXXXXXX). Sem ele, o GA não é carregado — útil em
+ * dev e em previews.
  */
 export const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
+
+/**
+ * ID do projeto no Microsoft Clarity. Sem ele, o Clarity não é carregado.
+ */
+export const CLARITY_ID = process.env.NEXT_PUBLIC_CLARITY_ID;
+
+declare global {
+  interface Window {
+    clarity?: (...args: unknown[]) => void;
+  }
+}
 
 type EventParams = Record<string, string | number | boolean | undefined>;
 
@@ -14,6 +25,9 @@ type EventParams = Record<string, string | number | boolean | undefined>;
  * LGPD agradece.
  */
 export function trackEvent(name: string, params: EventParams = {}) {
-  if (!GA_ID || typeof window === "undefined") return;
-  sendGAEvent("event", name, params);
+  if (typeof window === "undefined") return;
+  if (GA_ID) sendGAEvent("event", name, params);
+  // No Clarity o evento serve para filtrar gravações e mapas de calor
+  // (ex.: só sessões com clique no WhatsApp).
+  if (CLARITY_ID) window.clarity?.("event", name);
 }

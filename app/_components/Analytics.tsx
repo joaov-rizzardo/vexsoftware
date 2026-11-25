@@ -1,11 +1,13 @@
 "use client";
 
 import { GoogleAnalytics } from "@next/third-parties/google";
+import Script from "next/script";
 import { useEffect } from "react";
-import { GA_ID, trackEvent } from "./track";
+import { CLARITY_ID, GA_ID, trackEvent } from "./track";
 
 /**
- * Carrega o GA4 e rastreia cliques por delegação: um único listener no
+ * Carrega o GA4 e o Microsoft Clarity (mapas de calor e gravações de sessão),
+ * cada um só quando o respectivo ID está definido. Também rastreia cliques por delegação: um único listener no
  * documento cobre também os links renderizados em Server Components, sem
  * precisar transformar cada um em componente de cliente.
  *
@@ -17,7 +19,7 @@ import { GA_ID, trackEvent } from "./track";
  */
 export default function Analytics() {
   useEffect(() => {
-    if (!GA_ID) return;
+    if (!GA_ID && !CLARITY_ID) return;
 
     function onClick(e: MouseEvent) {
       const target = e.target as Element | null;
@@ -43,8 +45,16 @@ export default function Analytics() {
     return () => document.removeEventListener("click", onClick, { capture: true });
   }, []);
 
-  if (!GA_ID) return null;
-  return <GoogleAnalytics gaId={GA_ID} />;
+  return (
+    <>
+      {GA_ID && <GoogleAnalytics gaId={GA_ID} />}
+      {CLARITY_ID && (
+        <Script id="microsoft-clarity" strategy="afterInteractive">
+          {`(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script",${JSON.stringify(CLARITY_ID)});`}
+        </Script>
+      )}
+    </>
+  );
 }
 
 function eventFor(el: HTMLElement): string | null {

@@ -46,7 +46,23 @@ export default function PoliticaDePrivacidade() {
           navegador, nos servidores do Google.
         </p>
         <p>
-          Não enviamos ao Google Analytics o seu nome, e-mail, telefone nem o
+          Também usamos o Microsoft Clarity, que registra de forma anônima
+          movimentos do mouse, cliques e rolagem para gerar mapas de calor e
+          reproduções de navegação. O conteúdo digitado nos campos do
+          formulário é mascarado e não é enviado à Microsoft. O Clarity também
+          usa cookies e processa dados técnicos do navegador nos servidores da
+          Microsoft, conforme a{" "}
+          <a
+            href="https://privacy.microsoft.com/pt-br/privacystatement"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            declaração de privacidade da Microsoft
+          </a>
+          .
+        </p>
+        <p>
+          Não enviamos a essas ferramentas o seu nome, e-mail, telefone nem o
           conteúdo das mensagens. Você pode bloquear ou apagar os cookies nas
           configurações do navegador ou instalar o{" "}
           <a
@@ -77,7 +93,7 @@ export default function PoliticaDePrivacidade() {
           nosso e-mail; nesse processo, os dados informados trafegam pela
           infraestrutura desse fornecedor. Fora isso, o acesso é restrito à
           equipe da {SITE_NAME}. As estatísticas de uso do site são
-          processadas pelo Google, conforme descrito na seção sobre cookies.
+          processadas pelo Google e pela Microsoft, conforme descrito na seção sobre cookies.
         </p>
       </section>
 
